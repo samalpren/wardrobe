@@ -4,3 +4,9 @@ node_modules
 public/*.js
 api
 
+.DS_Store
+.vscode
+node_modules
+public/*.js
+api
+
