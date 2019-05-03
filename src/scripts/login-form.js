@@ -1,9 +1,9 @@
 import buildElement from "./dom-manager"
 
-buildLoginForm = {
+export default buildLoginForm = {
   buildLoginMethod() {
 
-  const loginContainer = document.querySelector("users-login-section");
+  const loginContainer = document.querySelector("welcome-page-section");
 
   clearElement(loginContainer);
 
@@ -26,6 +26,4 @@ buildLoginForm = {
   saveUser.textContent = "Sign Up!";
   saveUser.id = "saveUser";
   }
-};
-
-export default buildLoginForm
+}
