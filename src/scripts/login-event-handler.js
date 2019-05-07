@@ -4,9 +4,7 @@ import allFetchCalls from "./login-api"
 const buildLoginForm = {
   buildLoginMethod() {
 
-    const loginContainer = document.querySelector("welcome-page-section");
-
-    // clearElement(loginContainer);
+    const loginContainer = document.querySelector("#welcome-page-section");
 
     const userNameLabel = document.createElement("label");
     userNameLabel.textContent = "User name: ";
@@ -28,15 +26,16 @@ const buildLoginForm = {
     saveUserButton.id = "saveUser";
 
     const loginSections = document.createElement("section")
-    loginContainer.appendChild(userNameLabel)
+    loginSections.appendChild(userNameLabel)
     loginSections.appendChild(userNameInput)
     loginSections.appendChild(passwordLabel)
     loginSections.appendChild(passwordInput)
     loginSections.appendChild(emailLabel)
     loginSections.appendChild(emailInput)
     loginSections.appendChild(saveUserButton)
+    loginContainer.appendChild(loginSections)
 
-    return loginContainer
+    return loginContainer;
   },
 
   handleAddFormSubmission() {
@@ -48,7 +47,8 @@ const buildLoginForm = {
     const loginPost = {
       Username: userName,
       Password: userPassword,
-      Email: userEmail
+      Email: userEmail,
+      id: null
     }
     console.log("testing", loginPost)
 
