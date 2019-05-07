@@ -1,12 +1,12 @@
 const allFetchCalls = {
-  getArticles() {
-    return fetch("http://localhost:8088/articles")
+  getUser() {
+    return fetch("http://localhost:8088/users")
     .then (response => response.json())
   },
-  postNewArticle(newNewsPost) {
-    return fetch("http://localhost:8088/articles", {
+  postNewUser(loginPost) {
+    return fetch("http://localhost:8088/users", {
     method: "POST",
-    body: JSON.stringify(newNewsPost),
+    body: JSON.stringify(loginPost),
     headers: {
       "Content-Type": "application/json"
     }

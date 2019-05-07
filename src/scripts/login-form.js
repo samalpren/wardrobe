@@ -1,4 +1,4 @@
-import buildElement from "./dom-manager"
+import form from "./dom-manager"
 
 export default buildLoginForm = {
   buildLoginMethod() {

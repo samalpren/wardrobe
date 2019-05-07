@@ -1,5 +1,5 @@
-import buildLoginForm from "./login-event-handler";
-import allFetchCalls from "./news-api-handler";
+import buildLoginForm from "./login-event-handler"
+import allFetchCalls from "./login-api"
 
 const header = document.createElement("h1")
 const loginContainer = document.querySelector("#welcome-page-section");
@@ -8,46 +8,48 @@ loginContainer.appendChild(header);
 
 const login = {
   loginPost() {
+    console.log("testPost");
     const userButton = document.createElement("button");
     userButton.textContent = "Username";
     loginContainer.appendChild(userButton);
 
     userButton.addEventListener("click", () => {
-      buildLoginForm.buildNewsForm()
+      buildLoginForm.buildLoginMethod()
       document.querySelector("#save-signin-section").addEventListener("click", buildLoginForm.handleAddFormSubmission);
     })
-    // CREATE SECTION TO ARTICLES AND APPEND TO DOM
-    const newsArticlesOutput = document.createElement("section");
-    newsArticlesOutput.id = "newsArticlesOutput";
-    newsContainer.appendChild(newsArticlesOutput);
+    // CREATE SECTION FOR LOGIN
+    const loginOutput = document.createElement("section");
+    loginOutput.id = "loginOutput";
+    loginContainer.appendChild(loginOutput);
   },
-  // CHANGE THE NAME FOR ONLY EXISTING ARTICLES
   getPostForPage() {
-    allFetchCalls.getArticles()
-    .then(articles => {
+    allFetchCalls.getUser()
+    .then(users => {
 
-        const newsContainer = document.querySelector("#newsArticlesOutput");
+        const loginContainer = document.querySelector("#welcome-page-section");
 
-        //  CREATING NEWS ELEMENT POST TO PUT TO DOM
+        //  CREATING USER ELEMENT POST TO PUT TO DOM
 
-        articles.forEach(article => {
-         const loginSection = document.createElement("section");
-         const username = document.createElement("h2");
-         const password = document.createElement("h2");
-         const email = document.createElement("h2");
+        users.forEach(user => {
+         const userSection = document.createElement("section");
+         const userName = document.createElement("h1");
+         const userPassword = document.createElement("h2");
+         const userEmail = document.createElement("a");
+         const time = document.createElement("p");
 
-         username.textContent = article.username;
-         synopsis.textContent = article.password;
-         password.textContent = article.password;
-         email.textContent = article.email
+         userName.textContent = article.userName;
+         userPassword.textContent = article.userPassword;
+         userEmail.textContent = article.userEmail;
+         userEmail.setAttribute("href", article.userEmail)
+         userEmail.setAttribute("target", "_blank")
 
-         loginSection.appendChild(username);
-         loginSection.appendChild(password);
-         loginSection.appendChild(email);
-         loginContainer.appendChild(loginSection);
+         userSection.appendChild(userName);
+         userSection.appendChild(userPassword);
+         userSection.appendChild(userEmail);
+         loginContainer.appendChild(userSection);
         })
        })
       }
-    };
+}
 
-    export default login;
+export default login
