@@ -15,7 +15,7 @@ const login = {
 
     userButton.addEventListener("click", () => {
       buildLoginForm.buildLoginMethod()
-      document.querySelector("#save-signin-section").addEventListener("click", buildLoginForm.handleAddFormSubmission);
+      document.querySelector("#saveUser").addEventListener("click", buildLoginForm.handleAddFormSubmission);
     })
     // CREATE SECTION FOR LOGIN
     const loginOutput = document.createElement("section");
@@ -24,29 +24,29 @@ const login = {
   },
   getPostForPage() {
     allFetchCalls.getUser()
-    .then(users => {
+      .then(users => {
 
         const loginContainer = document.querySelector("#welcome-page-section");
 
         //  CREATING USER ELEMENT POST TO PUT TO DOM
 
         users.forEach(user => {
-         const userSection = document.createElement("section");
-         const userName = document.createElement("h1");
-         const userPassword = document.createElement("h1");
-         const userEmail = document.createElement("a");
+          const userSection = document.createElement("section");
+          const userName = document.createElement("h1");
+          const userPassword = document.createElement("h1");
+          const userEmail = document.createElement("a");
 
-         userName.textContent = user.userName;
-         userPassword.textContent = user.userPassword;
-         userEmail.textContent = user.userEmail;
+          userName.textContent = user.userName;
+          userPassword.textContent = user.userPassword;
+          userEmail.textContent = user.userEmail;
 
-         userSection.appendChild(userName);
-         userSection.appendChild(userPassword);
-         userSection.appendChild(userEmail);
-         loginContainer.appendChild(userSection);
+          userSection.appendChild(userName);
+          userSection.appendChild(userPassword);
+          userSection.appendChild(userEmail);
+          loginContainer.appendChild(userSection);
         })
-       })
-      }
+      })
+  }
 }
 
 export default login
