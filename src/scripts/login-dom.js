@@ -33,15 +33,12 @@ const login = {
         users.forEach(user => {
          const userSection = document.createElement("section");
          const userName = document.createElement("h1");
-         const userPassword = document.createElement("h2");
+         const userPassword = document.createElement("h1");
          const userEmail = document.createElement("a");
-         const time = document.createElement("p");
 
-         userName.textContent = article.userName;
-         userPassword.textContent = article.userPassword;
-         userEmail.textContent = article.userEmail;
-         userEmail.setAttribute("href", article.userEmail)
-         userEmail.setAttribute("target", "_blank")
+         userName.textContent = user.userName;
+         userPassword.textContent = user.userPassword;
+         userEmail.textContent = user.userEmail;
 
          userSection.appendChild(userName);
          userSection.appendChild(userPassword);
