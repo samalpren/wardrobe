@@ -1,4 +1,7 @@
-buildLoginForm = {
+import login from "./login-dom"
+import allFetchCalls from "./login-api"
+
+const buildLoginForm = {
   buildLoginMethod() {
 
     const loginContainer = document.querySelector("welcome-page-section");
@@ -38,7 +41,7 @@ buildLoginForm = {
 
   handleAddFormSubmission() {
     console.log("testing")
-    const userName = document.querySelector("#user-login-section").value;
+    const userName = document.querySelector("#users-login-section").value;
     const userPassword = document.querySelector("#password-input").value;
     const userEmail = document.querySelector("#email-input").value;
 
@@ -52,10 +55,10 @@ buildLoginForm = {
     const loginOutput = document.querySelector("#loginOutput")
     // THESE SHOULD BE THE ACTION OF HANDLEADDFORM, CREATE NEW FETCH
 
-    allFetchCalls.postNewUser(userButton)
+    allFetchCalls.postNewUser(loginPost)
       .then(clearElement(loginOutput))
-      .then(news.getPostForPage)
+      .then(login.getPostForPage)
   }
 }
 
-export default buildLoginForm;
+export default buildLoginForm

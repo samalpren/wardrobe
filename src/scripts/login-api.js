@@ -3,10 +3,10 @@ const allFetchCalls = {
     return fetch("http://localhost:8088/users")
     .then (response => response.json())
   },
-  postNewUser(userButton) {
+  postNewUser(loginPost) {
     return fetch("http://localhost:8088/users", {
     method: "POST",
-    body: JSON.stringify(userButton),
+    body: JSON.stringify(loginPost),
     headers: {
       "Content-Type": "application/json"
     }
