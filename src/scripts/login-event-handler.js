@@ -21,6 +21,10 @@ const buildLoginForm = {
     const emailInput = document.createElement("input");
     emailInput.id = "email-input";
 
+    const signinButton = document.createElement("button");
+    signinButton.textContent = "Sign In!";
+    signinButton.id = "signin";
+
     const saveUserButton = document.createElement("button");
     saveUserButton.textContent = "Sign Up!";
     saveUserButton.id = "saveUser";
@@ -32,6 +36,7 @@ const buildLoginForm = {
     loginSections.appendChild(passwordInput)
     loginSections.appendChild(emailLabel)
     loginSections.appendChild(emailInput)
+    loginSections.appendChild(signinButton)
     loginSections.appendChild(saveUserButton)
     loginContainer.appendChild(loginSections)
 
