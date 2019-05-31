@@ -1,16 +1,16 @@
 import buildLoginForm from "./login-event-handler"
 import allFetchCalls from "./login-api"
 
-const header = document.createElement("h1")
+// const header = document.createElement("h1")
 const loginContainer = document.querySelector("#welcome-page-section");
-header.textContent = "WARDROBE"
-loginContainer.appendChild(header);
+// header.textContent = "WARDROBE"
+// loginContainer.appendChild(header);
 
 const login = {
   loginPost() {
     console.log("testPost");
     const userButton = document.createElement("button");
-    userButton.textContent = "Username";
+    userButton.textContent = "Login/Register";
     loginContainer.appendChild(userButton);
 
     userButton.addEventListener("click", () => {

@@ -30,6 +30,7 @@ const buildLoginForm = {
     saveUserButton.id = "saveUser";
 
     const loginSections = document.createElement("section")
+    loginSections.id = "loginSection";
     loginSections.appendChild(userNameLabel)
     loginSections.appendChild(userNameInput)
     loginSections.appendChild(passwordLabel)
@@ -60,9 +61,39 @@ const buildLoginForm = {
     const loginOutput = document.querySelector("#loginOutput")
     // THESE SHOULD BE THE ACTION OF HANDLEADDFORM, CREATE NEW FETCH
 
+    // 1. create the new user in the db
     allFetchCalls.postNewUser(loginPost)
-      .then(clearElement(loginOutput))
-      .then(login.getPostForPage)
+      .then(() => {
+        // 2. get the new user from the db so we have their UserID 
+        allFetchCalls.getUser().then(foo => {
+          console.log(foo);
+          var newUserId = foo.find(x => 
+            x.Username === loginPost.Username &&
+            x.Email === loginPost.Email &&
+            x.Password === loginPost.Password).id
+          
+          // then store the new user id in session
+          sessionStorage.setItem("Wardrobe.LoggedInUserId", newUserId);
+
+          debugger;
+          // this code below changes to page 2
+          // NEVERMIND, DON'T DO THIS --->   window.location.href = "./Page2.html";
+
+          // now hide the user login stuff
+          document.querySelector("#loginSection").style.display = "none";
+
+          // and now show the menu stuff
+          document.querySelector("#menu-section").style.display = "block";
+          // and pull out the userid from session and display on the page
+          var loggedInUserId = sessionStorage.getItem("Wardrobe.LoggedInUserId");
+          document.querySelector("#spnUserId").innerHTML = loggedInUserId;
+        });
+      });
+
+      //.then(clearElement(loginOutput)) // TODO - get this working
+      //.then(login.getPostForPage) // TODO - need to talk about what this was trying to do
+
+    
   }
 }
 
