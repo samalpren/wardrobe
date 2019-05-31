@@ -1,4 +1,4 @@
-import buildLoginForm from "./login-event-handler"
+import form from "./login-event-handler"
 import allFetchCalls from "./login-api"
 
 // const header = document.createElement("h1")
@@ -9,14 +9,12 @@ const loginContainer = document.querySelector("#welcome-page-section");
 const login = {
   loginPost() {
     console.log("testPost");
-    const userButton = document.createElement("button");
-    userButton.textContent = "Login/Register";
-    loginContainer.appendChild(userButton);
+    const signInButton = document.querySelector("#signInButton");
+    const signUpButton = document.querySelector("#signUpButton");
 
-    userButton.addEventListener("click", () => {
-      buildLoginForm.buildLoginMethod()
-      document.querySelector("#saveUser").addEventListener("click", buildLoginForm.handleAddFormSubmission);
-    })
+    signUpButton.addEventListener("click", onSignUpClick);
+    signInButton.addEventListener("click", onSignInClick);
+
     // CREATE SECTION FOR LOGIN
     const loginOutput = document.createElement("section");
     loginOutput.id = "loginOutput";
@@ -46,6 +44,31 @@ const login = {
           loginContainer.appendChild(userSection);
         })
       })
+  }
+}
+
+const onSignUpClick = () => {
+  showFormAndShowEmail(true);
+  hideSignInUpButtons();
+  document.querySelector("#submitButton").addEventListener("click",         form.handleAddFormSubmission);
+}
+
+const onSignInClick = () => {
+  showFormAndShowEmail(false);
+  hideSignInUpButtons();
+  document.querySelector("#submitButton").addEventListener("click",         form.handleSignInFormSubmission);
+}
+
+const hideSignInUpButtons = () => {
+  document.querySelector("#signInButton").style.display = "none";
+  document.querySelector("#signUpButton").style.display = "none";
+}
+
+const showFormAndShowEmail = (showEmail) => {
+  document.querySelector("#signInUpForm").style.display = "block";
+  if (showEmail === false) {
+    document.querySelector("#emailInput").style.display = "none";
+    document.querySelector("#emailLabel").style.display = "none";
   }
 }
 
